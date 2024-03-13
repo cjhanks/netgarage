@@ -1,0 +1,40 @@
+# vim: ts=2 sw=2 et ai
+
+This one will use an underflow exploiting the use of negative numbers casted
+into `size_t` to overflow the `memcpy` call.
+
+The first step is to figure out the address of the `count` and the
+`buf` variable.  So we will populate them and view them.
+
+Here we can see the result of `atoi` being placed into ebp-0xc.
+   0x0804842f <+27>:	call   0x8048354 <atoi@plt>
+   0x08048434 <+32>:	mov    DWORD PTR [ebp-0xc],eax
+
+And here we can see the address being passed in for the `memcpy` called,
+it is ebp-0x48.
+   0x0804845c <+72>:	lea    eax,[ebp-0x48]
+   0x0804845f <+75>:	mov    DWORD PTR [esp],eax
+   0x08048462 <+78>:	call   0x8048334 <memcpy@plt>
+
+The distance between those is 60.
+
+--
+Now we need to underflow.  In normal cases,
+INT_MIN -(casted unsigned)-> MAX_INT (aka 2147483648)
+
+In our case, we are incrementing by 4, so that wrap around will occur 4 times.
+When searching for a target value of 60, they are:
+
+  -2147483633 + 1
+  -1073741809 + 1
+  15
+  1073741839
+
+The two positive cases are irrelevant for our use, since the validation checks
+for them.
+
+Additionally, the value 0x574f4c46 maps to the string 'FLOW'.
+
+Therefore the arguments are:
+  argv[1] = -1073741808
+  argv[2] = 'w' * 60 + 'FLOW'

