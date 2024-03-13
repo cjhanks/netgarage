@@ -1,0 +1,3 @@
+buf is @ -0x80(%rbp)
+
+Another 8 bytes is, so address of return is: -0x88
