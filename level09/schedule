@@ -1,0 +1,256 @@
+echo 0xbffff99c
+./level09 $(echo -e 'nPn/v3d3d3ee+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9a0
+./level09 $(echo -e 'oPn/v3d3d3ei+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9a4
+./level09 $(echo -e 'pPn/v3d3d3em+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9a8
+./level09 $(echo -e 'qPn/v3d3d3eq+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9ac
+./level09 $(echo -e 'rPn/v3d3d3eu+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9b0
+./level09 $(echo -e 'sPn/v3d3d3ey+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9b4
+./level09 $(echo -e 'tPn/v3d3d3e2+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9b8
+./level09 $(echo -e 'uPn/v3d3d3e6+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9bc
+./level09 $(echo -e 'vPn/v3d3d3e++f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9c0
+./level09 $(echo -e 'wPn/v3d3d3fC+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9c4
+./level09 $(echo -e 'xPn/v3d3d3fG+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9c8
+./level09 $(echo -e 'yPn/v3d3d3fK+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9cc
+./level09 $(echo -e 'zPn/v3d3d3fO+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9d0
+./level09 $(echo -e '0Pn/v3d3d3fS+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9d4
+./level09 $(echo -e '1Pn/v3d3d3fW+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9d8
+./level09 $(echo -e '2Pn/v3d3d3fa+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9dc
+./level09 $(echo -e '3Pn/v3d3d3fe+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9e0
+./level09 $(echo -e '4Pn/v3d3d3fi+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9e4
+./level09 $(echo -e '5Pn/v3d3d3fm+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9e8
+./level09 $(echo -e '6Pn/v3d3d3fq+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9ec
+./level09 $(echo -e '7Pn/v3d3d3fu+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9f0
+./level09 $(echo -e '8Pn/v3d3d3fy+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9f4
+./level09 $(echo -e '9Pn/v3d3d3f2+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9f8
+./level09 $(echo -e '+Pn/v3d3d3f6+f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffff9fc
+./level09 $(echo -e '/Pn/v3d3d3f++f+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa00
+./level09 $(echo -e 'APr/v3d3d3cC+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa04
+./level09 $(echo -e 'BPr/v3d3d3cG+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa08
+./level09 $(echo -e 'CPr/v3d3d3cK+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa0c
+./level09 $(echo -e 'DPr/v3d3d3cO+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa10
+./level09 $(echo -e 'EPr/v3d3d3cS+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa14
+./level09 $(echo -e 'FPr/v3d3d3cW+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa18
+./level09 $(echo -e 'GPr/v3d3d3ca+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa1c
+./level09 $(echo -e 'HPr/v3d3d3ce+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa20
+./level09 $(echo -e 'IPr/v3d3d3ci+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa24
+./level09 $(echo -e 'JPr/v3d3d3cm+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa28
+./level09 $(echo -e 'KPr/v3d3d3cq+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa2c
+./level09 $(echo -e 'LPr/v3d3d3cu+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa30
+./level09 $(echo -e 'MPr/v3d3d3cy+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa34
+./level09 $(echo -e 'NPr/v3d3d3c2+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa38
+./level09 $(echo -e 'OPr/v3d3d3c6+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa3c
+./level09 $(echo -e 'PPr/v3d3d3c++v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa40
+./level09 $(echo -e 'QPr/v3d3d3dC+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa44
+./level09 $(echo -e 'RPr/v3d3d3dG+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa48
+./level09 $(echo -e 'SPr/v3d3d3dK+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa4c
+./level09 $(echo -e 'TPr/v3d3d3dO+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa50
+./level09 $(echo -e 'UPr/v3d3d3dS+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa54
+./level09 $(echo -e 'VPr/v3d3d3dW+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa58
+./level09 $(echo -e 'WPr/v3d3d3da+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa5c
+./level09 $(echo -e 'XPr/v3d3d3de+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa60
+./level09 $(echo -e 'YPr/v3d3d3di+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa64
+./level09 $(echo -e 'ZPr/v3d3d3dm+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa68
+./level09 $(echo -e 'aPr/v3d3d3dq+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa6c
+./level09 $(echo -e 'bPr/v3d3d3du+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa70
+./level09 $(echo -e 'cPr/v3d3d3dy+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa74
+./level09 $(echo -e 'dPr/v3d3d3d2+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa78
+./level09 $(echo -e 'ePr/v3d3d3d6+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa7c
+./level09 $(echo -e 'fPr/v3d3d3d++v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa80
+./level09 $(echo -e 'gPr/v3d3d3eC+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa84
+./level09 $(echo -e 'hPr/v3d3d3eG+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa88
+./level09 $(echo -e 'iPr/v3d3d3eK+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa8c
+./level09 $(echo -e 'jPr/v3d3d3eO+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa90
+./level09 $(echo -e 'kPr/v3d3d3eS+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa94
+./level09 $(echo -e 'lPr/v3d3d3eW+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa98
+./level09 $(echo -e 'mPr/v3d3d3ea+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffa9c
+./level09 $(echo -e 'nPr/v3d3d3ee+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaa0
+./level09 $(echo -e 'oPr/v3d3d3ei+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaa4
+./level09 $(echo -e 'pPr/v3d3d3em+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaa8
+./level09 $(echo -e 'qPr/v3d3d3eq+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaac
+./level09 $(echo -e 'rPr/v3d3d3eu+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffab0
+./level09 $(echo -e 'sPr/v3d3d3ey+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffab4
+./level09 $(echo -e 'tPr/v3d3d3e2+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffab8
+./level09 $(echo -e 'uPr/v3d3d3e6+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffabc
+./level09 $(echo -e 'vPr/v3d3d3e++v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffac0
+./level09 $(echo -e 'wPr/v3d3d3fC+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffac4
+./level09 $(echo -e 'xPr/v3d3d3fG+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffac8
+./level09 $(echo -e 'yPr/v3d3d3fK+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffacc
+./level09 $(echo -e 'zPr/v3d3d3fO+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffad0
+./level09 $(echo -e '0Pr/v3d3d3fS+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffad4
+./level09 $(echo -e '1Pr/v3d3d3fW+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffad8
+./level09 $(echo -e '2Pr/v3d3d3fa+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffadc
+./level09 $(echo -e '3Pr/v3d3d3fe+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffae0
+./level09 $(echo -e '4Pr/v3d3d3fi+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffae4
+./level09 $(echo -e '5Pr/v3d3d3fm+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffae8
+./level09 $(echo -e '6Pr/v3d3d3fq+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaec
+./level09 $(echo -e '7Pr/v3d3d3fu+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaf0
+./level09 $(echo -e '8Pr/v3d3d3fy+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaf4
+./level09 $(echo -e '9Pr/v3d3d3f2+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffaf8
+./level09 $(echo -e '+Pr/v3d3d3f6+v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffafc
+./level09 $(echo -e '/Pr/v3d3d3f++v+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb00
+./level09 $(echo -e 'APv/v3d3d3cC+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb04
+./level09 $(echo -e 'BPv/v3d3d3cG+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb08
+./level09 $(echo -e 'CPv/v3d3d3cK+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb0c
+./level09 $(echo -e 'DPv/v3d3d3cO+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb10
+./level09 $(echo -e 'EPv/v3d3d3cS+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb14
+./level09 $(echo -e 'FPv/v3d3d3cW+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb18
+./level09 $(echo -e 'GPv/v3d3d3ca+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb1c
+./level09 $(echo -e 'HPv/v3d3d3ce+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb20
+./level09 $(echo -e 'IPv/v3d3d3ci+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb24
+./level09 $(echo -e 'JPv/v3d3d3cm+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb28
+./level09 $(echo -e 'KPv/v3d3d3cq+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb2c
+./level09 $(echo -e 'LPv/v3d3d3cu+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb30
+./level09 $(echo -e 'MPv/v3d3d3cy+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb34
+./level09 $(echo -e 'NPv/v3d3d3c2+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb38
+./level09 $(echo -e 'OPv/v3d3d3c6+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb3c
+./level09 $(echo -e 'PPv/v3d3d3c++/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb40
+./level09 $(echo -e 'QPv/v3d3d3dC+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb44
+./level09 $(echo -e 'RPv/v3d3d3dG+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb48
+./level09 $(echo -e 'SPv/v3d3d3dK+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb4c
+./level09 $(echo -e 'TPv/v3d3d3dO+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb50
+./level09 $(echo -e 'UPv/v3d3d3dS+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb54
+./level09 $(echo -e 'VPv/v3d3d3dW+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb58
+./level09 $(echo -e 'WPv/v3d3d3da+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb5c
+./level09 $(echo -e 'XPv/v3d3d3de+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb60
+./level09 $(echo -e 'YPv/v3d3d3di+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb64
+./level09 $(echo -e 'ZPv/v3d3d3dm+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb68
+./level09 $(echo -e 'aPv/v3d3d3dq+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb6c
+./level09 $(echo -e 'bPv/v3d3d3du+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb70
+./level09 $(echo -e 'cPv/v3d3d3dy+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb74
+./level09 $(echo -e 'dPv/v3d3d3d2+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb78
+./level09 $(echo -e 'ePv/v3d3d3d6+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb7c
+./level09 $(echo -e 'fPv/v3d3d3d++/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb80
+./level09 $(echo -e 'gPv/v3d3d3eC+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb84
+./level09 $(echo -e 'hPv/v3d3d3eG+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb88
+./level09 $(echo -e 'iPv/v3d3d3eK+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb8c
+./level09 $(echo -e 'jPv/v3d3d3eO+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb90
+./level09 $(echo -e 'kPv/v3d3d3eS+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb94
+./level09 $(echo -e 'lPv/v3d3d3eW+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null
+echo 0xbffffb98
+./level09 $(echo -e 'mPv/v3d3d3ea+/+/JTY0NzE1ZCU0JGhuJTQ5OTYwZCU2JGhud3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dw==' | base64 -d) 1> /dev/null

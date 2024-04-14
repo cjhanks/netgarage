@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+
+from argparse import ArgumentParser
+from hashlib import md5
+from os import listdir
+from os.path import join
+
+
+def load_dict(path):
+    mapping = {}
+
+    for p in listdir(path):
+        (ch1, ch2, _) = p.split('-')
+        if not 'NULL' in {ch1, ch2}:
+            continue
+
+        if ch1 == 'NULL':
+            key = int(ch2, 16)
+            index = 0
+
+        if ch2 == 'NULL':
+            key = int(ch1, 16)
+            index = 1
+
+        if key in mapping:
+            continue
+
+        load_name0 = '{}-{}-{}'.format(ch1, ch2, index)
+        load_path0 = join(path, load_name0)
+
+        load_name1 = '{}-{}-{}'.format(ch1, ch2, (index + 1) % 2)
+        load_path1 = join(path, load_name1)
+
+        if key in mapping:
+            continue
+
+        bytes_0 = open(load_path0, 'rb').read()
+        bytes_1 = open(load_path1, 'rb').read()
+
+        md5_0 = md5(bytes_0)
+        md5_1 = md5(bytes_1)
+        assert md5_0.hexdigest() == md5_1.hexdigest()
+
+        mapping[key] = [bytes_0, bytes_1]
+
+    return mapping
+
+def find_offset_index(a, b):
+    for (i, (ca, cb)) in enumerate(zip(a, b)):
+            if ca == cb:
+                continue
+
+            return i
+
+    return min(len(a), len(b))
+
+def main(argv=None):
+    argp = ArgumentParser()
+    argp.add_argument(
+        '-d',
+        '--dictionary',
+        required=True
+    )
+    argp.add_argument(
+        '-a',
+        '--command-a',
+        required=True
+    )
+    argp.add_argument(
+        '-b',
+        '--command-b',
+        required=True
+    )
+    args = argp.parse_args(argv)
+
+    # Load the dictionary
+    mapping = load_dict(args.dictionary)
+
+    # Find the split point.
+    split = find_offset_index(args.command_a, args.command_b)
+
+    output_a = args.command_a[:split].encode('ascii')
+    output_b = args.command_b[:split].encode('ascii')
+    assert output_a == output_b
+
+    # Get the remainders.
+    remainder_a = args.command_a[split:].encode('ascii')
+    remainder_b = args.command_b[split:].encode('ascii')
+
+    # Append the relevant data from A on to B.
+    for ch in remainder_a:
+        (i, j) = mapping[ch]
+        output_a += j
+        output_b += i
+        break
+
+    #for ch in remainder_b:
+    #    output_a.extend(mapping[ch])
+    #    output_b.append(ch)
+
+    # Get results
+    result_a = bytes(output_a)
+    result_b = bytes(output_b)
+
+    md5_a = md5(result_a)
+    md5_b = md5(result_b)
+
+    print('-' * 70)
+    print(md5_a.hexdigest())
+    print(md5_b.hexdigest())
+    print(md5_a == md5_b)
+
+
+if __name__ == '__main__':
+    main([
+        '-d',
+            'dict',
+        '-a',
+            '+[----->+++<]>++.++++++.[->+++++<]>+++.[--->++<]>-.+.-.+[---->+<]>+++.>-[--->+<]>---.----[-->+++<]>.---------.-------.[--->+<]>----.+[-->+++++<]>-.',
+        '-b',
+            '+[----->+++<]>++.++++++.[->+++++<]>+++.[--->++<]>-.+.-.+[---->+<]>+++.>-[--->+<]>--.[--->+<]>++++.+[->+++<]>+.++++++++.++++++++.+[-->+++++<]>-.',
+    ])
+

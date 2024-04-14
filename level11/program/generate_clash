@@ -1,0 +1,135 @@
+import hashlib
+from random import choice, randint
+from os import environ
+from os.path import exists
+from subprocess import Popen, DEVNULL
+from tempfile import NamedTemporaryFile
+from threading import Lock, Thread
+from queue import Queue
+
+charset = {
+    b'<',
+    b'>',
+    b'.',
+    b'[',
+    b']',
+    b'+',
+    b'-',
+}
+charset_bin = {ord(c) for c in charset}
+
+md5charset = 'abcdef0123456789'
+write_lock = Lock()
+
+def dictify_data(data):
+    if b'\x00' in data:
+        return None
+
+    data_set = set(data) & charset_bin
+    if len(data_set) == 0:
+        return b''
+
+    if len(data_set) != 1:
+        return None
+
+    target_char = data_set.pop()
+    count = data.count(target_char)
+    if count == 1:
+        return chr(target_char)
+    else:
+        print('COUNT: %s (%d)' % (chr(target_char), count))
+        return None
+
+def thread_step():
+    file1 = NamedTemporaryFile(dir='working')
+    file2 = NamedTemporaryFile(dir='working')
+    #init5 = ''.join([choice(md5charset) for _ in range(32)])
+    
+    new_env = environ.copy()
+    new_env['SEED'] = str(randint(0, 2147483647))
+    proc = Popen([
+        '/opt/hashclash/bin/md5_fastcoll',
+            '-o',
+                file1.name,
+                file2.name
+    ],
+    env=new_env,
+    stdout=DEVNULL,
+    stderr=DEVNULL,
+    )
+
+    rc = proc.wait()
+    if rc != 0:
+        print('ERROR: %d' % rc)
+        return
+
+    with open(file1.name, 'rb') as fp:
+        raw1  = fp.read()
+        data1 = dictify_data(raw1)
+        if data1 is None:
+            return
+
+    with open(file2.name, 'rb') as fp:
+        raw2  = fp.read()
+        data2 = dictify_data(raw2)
+        if data2 is None:
+            return
+    
+    #hash1 = hashlib.md5(raw1)
+    #hash2 = hashlib.md5(raw2)
+    #    
+    #if hash1 != hash2:
+    #    print('MISMATCHED')
+    #    return
+
+    if data1 == data2:
+        #print('SAME %s %s' % (data1, data2))
+        return
+    
+    print('-' * 70)
+    print('MATCH')
+    if data1 == b'':
+        name1 = 'NULL'
+    else:
+        name1 = hex(ord(data1[0]))
+
+    if data2 == b'':
+        name2 = 'NULL'
+    else:
+        name2 = hex(ord(data2[0]))
+
+    full_name1 = '{}-{}-0'.format(name1, name2)
+    full_name2 = '{}-{}-1'.format(name1, name2)
+
+
+
+    with write_lock:
+        if exists(full_name1) or exists(full_name2):
+            return
+
+        with open(full_name1, 'wb') as fp:
+            fp.write(raw1)
+
+        with open(full_name2, 'wb') as fp:
+            fp.write(raw2)
+
+def thread_loop():
+    while True:
+        thread_step()
+
+def main(argv=None):
+    #thread_loop()
+    #assert 1 == 0
+    thread_count = 32
+
+    threads = []
+    for _ in range(thread_count):
+        th = Thread(target=thread_loop)
+        th.start()
+        threads.append(th)
+
+    for th in threads:
+        th.join()
+
+if __name__ == '__main__':
+    main()

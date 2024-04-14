@@ -1,0 +1,27 @@
+diff --git a/src/md5fastcoll/main.cpp b/src/md5fastcoll/main.cpp
+index 972c507..ae12d4e 100644
+--- a/src/md5fastcoll/main.cpp
++++ b/src/md5fastcoll/main.cpp
+@@ -81,6 +81,7 @@ int main()
+
+ #else
+
++#include <stdlib.h>^M
+ #include <sstream>
+ #include <string>
+ #include <utility>
+@@ -103,7 +104,12 @@ void test_all();
+
+ int main(int argc, char** argv)
+ {
+-       seed32_1 = uint32(time(NULL));
++       const char* seed_str = getenv("SEED");^M
++       if (seed_str) {^M
++               seed32_1 = atoi(seed_str);^M
++       } else {^M
++               seed32_1 = uint32(time(NULL));^M
++       }^M
+        seed32_2 = 0x12345678;
+
+        uint32 IV[4] = { MD5IV[0], MD5IV[1], MD5IV[2], MD5IV[3] };
+

